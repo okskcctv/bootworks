@@ -1,8 +1,10 @@
 package com.boot;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -20,7 +22,7 @@ public class QueryMethodTest {
 	
 	/*BeforeEach의 dataPrepare()는 테스트 메소드가
 	  실행되기 전에 동작함. 데이터 200개 저장*/
-	@BeforeEach
+	/*@BeforeEach
 	public void dataPrepare() {
 		for(int i=1; i<=200; i++) {
 			Board board = new Board();
@@ -31,6 +33,49 @@ public class QueryMethodTest {
 			board.setCnt(0L);
 			
 			boardRepo.save(board);
+		}
+	}*/
+	
+	/*@Test
+	public void testFindByTitle() {
+		// findByTitle(keyword) 사용
+		List<Board> boardList = boardRepo.findByTitle("테스트 제목 10");
+		
+		log.info("검색 결과");
+		for(Board board : boardList) {
+			log.info("--->" + board.toString());
+		}
+	}*/
+	
+	/*@Test
+	public void findByContentContaining() {
+		List<Board> boardList = boardRepo.findByContentContaining("17");
+		
+		log.info("검색 결과");
+		for(Board board : boardList) {
+			log.info("--->" + board.toString());
+		}
+	}*/
+	
+	/*@Test
+	public void testFindByTitleContainingOrContentContaining() {
+		List<Board> boardList = 
+				boardRepo.findByTitleContainingOrContentContaining("17", "18");
+		
+		log.info("검색 결과");
+		for(Board board : boardList) {
+			log.info("--->" + board.toString());
+		}
+	}*/
+	
+	@Test
+	public void testFindByTitleContainingOrderBySeqDesc() {
+		List<Board> boardList =
+				boardRepo.findByTitleContainingOrderBySeqDesc("18");
+		
+		log.info("검색 결과");
+		for(Board board : boardList) {
+			log.info("--->" + board.toString());
 		}
 	}
 }
