@@ -6,6 +6,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 import com.boot.domain.Board;
 import com.boot.domain.Member;
@@ -24,7 +28,7 @@ public class BoardRepositoryTest{
 	@Autowired
 	private BoardRepository boardRepo;
 	
-	@Test
+	/*@Test
 	public void testDataInsert() {
 		Member member1 = new Member();
 		member1.setId("member1");
@@ -53,6 +57,39 @@ public class BoardRepositoryTest{
 			board.setWriter("아기상어");
 			board.setTitle("아기상어가 등록한 게시글 " + i);
 			board.setContent("아기상어가 등록한 게시글 내용 " + i);
+			boardRepo.save(board);
+		}
+	}*/
+	
+	@Test
+	public void testManyToOnInsert() {
+		Member member1 = new Member();
+		member1.setId("member1");
+		member1.setPassword("member111");
+		member1.setName("뽀로로");
+		member1.setRole("User");
+		memberRepo.save(member1);
+		
+		Member member2 = new Member();
+		member2.setId("member2");
+		member2.setPassword("member222");
+		member2.setName("아기상어");
+		member2.setRole("Admin");
+		memberRepo.save(member2);
+		
+		for(int i = 1; i <= 3; i++) {
+			Board board = new Board();
+			board.setMember(member1);
+			board.setTitle("뽀로로가 등록한 게시글" + i);
+			board.setContent("뽀로로가 등록한 게시글 내용" + i);
+			boardRepo.save(board);
+		}
+		
+		for(int i = 1; i <= 3; i++) {
+			Board board = new Board();
+			board.setMember(member2);
+			board.setTitle("아기상어가 등록한 게시글" + i);
+			board.setContent("아기상어가 등록한 게시글 내용" + i);
 			boardRepo.save(board);
 		}
 	}
@@ -107,4 +144,18 @@ public class BoardRepositoryTest{
 		
 		boardRepo.deleteById(2L);
 	}*/
+	
+	// 검색
+	/*@Test
+	public void testQueryAnnotationTest2() {
+		// 1페이지를 게시글 5개 내림차순으로 조회
+		Pageable paging = PageRequest.of(0, 5, Sort.Direction.DESC, "seq");
+		List<Board> boardList = boardRepo.queryAnnotationTest2(paging);
+		
+		log.info("검색 결과");
+		for(Board board : boardList) {
+			log.info("--->" + board.toString());
+		}
+	}*/
+	
 }
