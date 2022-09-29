@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+	<div th:replace="menu.html::nav"></div>
 	<div id="container">
 		<h2>글 상세 보기</h2>
 		<form th:action="@{/updateBoard}" method="post">
@@ -18,7 +19,7 @@
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="writer" th:value="${board.writer}"></td>
+					<td><input type="text" name="writer" th:value="${board.member.name}"></td>
 				</tr>
 				<tr>
 					<td>내용</td>

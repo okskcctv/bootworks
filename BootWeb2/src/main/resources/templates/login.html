@@ -6,8 +6,12 @@
 <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+	<div th:replace="menu.html::nav"></div>
 	<div id="container">
 		<h2>로그인</h2>
+		<th:block th:if="${error == 1}">
+			<h3 style="color: red;" th:text="'아이디나 비밀번호를 확인해주세요.'"></h3>
+		</th:block>
 		<form th:action="@{/login}" method="post">
 			<table class="tbl_login">
 				<tr>
@@ -25,7 +29,6 @@
 				</tr>
 			</table>
 		</form>
-		<a th:href="@{/}">홈으로</a>
 	</div>
 </body>
 </html>

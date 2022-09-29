@@ -6,9 +6,11 @@
 <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+	<div th:replace="menu.html::nav"></div>
 	<div id="container">
 		<h2>글쓰기</h2>
 		<form th:action="@{/insertBoard}" method="post">
+			<input type="hidden" name="member" th:value="${session['member'].id}">
 			<table class="tbl_reg">
 				<tr>
 					<td>제목</td>
@@ -16,7 +18,7 @@
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="writer" th:value="${session['member'].name}"></td>
+					<td><input type="text" th:value="${session['member'].name}" readonly></td>
 				</tr>
 				<tr>
 					<td>내용</td>

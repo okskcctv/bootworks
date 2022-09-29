@@ -5,6 +5,11 @@
 a{text-decoration: none; color: #000;}
 h2{padding-top: 20px;}
 
+/* menu 스타일 */
+nav{width: 100%;}
+ul{width: 80%; margin : 0 auto; list-style: none; display: inline-block;}
+li{float: left; margin: 0 10px 0 10px;}
+
 /* getBoardList 스타일 */
 .tbl_list{width: 700px; margin: 0 auto; text-align: center;}
 .tbl_list, th, td{border: 1px solid #ccc; border-collapse: collapse;}
@@ -32,3 +37,9 @@ h2{padding-top: 20px;}
 .tbl_login, td{border: 1px solid #ccc; border-collapse: collapse;}
 .tbl_login td{padding: 10px;}
 .tbl_login input{width: 250px; height: 30px;}
+
+/* getMemberList 스타일 */
+.tbl_member{width: 700px; margin: 0 auto; text-align: center;}
+.tbl_member, th, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_member th, td{padding: 10px;}
+.tbl_member thead{background: #eee;}

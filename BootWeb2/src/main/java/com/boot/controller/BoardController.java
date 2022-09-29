@@ -14,8 +14,12 @@ import com.boot.domain.Board;
 import com.boot.domain.Member;
 import com.boot.service.BoardService;
 
+import jdk.internal.org.jline.utils.Log;
+import lombok.extern.slf4j.Slf4j;
+
 @SessionAttributes("member")
 @Controller
+@Slf4j
 public class BoardController {
 	
 	@Autowired
@@ -24,7 +28,13 @@ public class BoardController {
 	// 인증 상태 유지하기
 	@ModelAttribute("member")
 	public Member setMember() {
+		log.info("보드 컨트롤러 맴버");
 		return new Member();
+	}
+	
+	@GetMapping("/")
+	public String home() {
+		return "/index";
 	}
 	
 	@GetMapping("/getBoardList")
