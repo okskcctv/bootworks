@@ -1,1 +1,45 @@
 @charset "UTF-8";
+
+/* common 스타일 */
+#container{width: 1000px; margin: 20 auto; text-align: center;}
+a{text-decoration: none; color: #000;}
+h2{padding-top: 20px;}
+
+/* menu 스타일 */
+nav{width: 100%;}
+ul{width: 80%; margin : 0 auto; list-style: none; display: inline-block;}
+li{float: left; margin: 0 10px 0 10px;}
+
+/* getBoardList 스타일 */
+.tbl_list{width: 700px; margin: 0 auto; text-align: center;}
+.tbl_list, th, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_list th, td{padding: 10px;}
+.tbl_list thead{background: #eee;}
+
+.tbl_list th, .tbl_list td{background: rgb(250, 245, 239);}
+
+/* insertBoard 스타일 */
+.tbl_reg{width: 700px; margin: 0 auto;}
+.tbl_reg, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_reg td{padding: 10px;}
+.tbl_reg input{width: 580px; height: 25px;}
+.tbl_reg textarea{width: 580px;}
+
+/* getBoard 스타일 */
+.tbl_view{width: 700px; margin: 0 auto;}
+.tbl_view, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_view td{padding: 10px;}
+.tbl_view input{width: 580px; height: 25px;}
+.tbl_view textarea{width: 580px;}
+
+/* login 스타일 */
+.tbl_login{width: 380px; margin: 0 auto;}
+.tbl_login, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_login td{padding: 10px;}
+.tbl_login input{width: 250px; height: 30px;}
+
+/* getMemberList 스타일 */
+.tbl_member{width: 700px; margin: 0 auto; text-align: center;}
+.tbl_member, th, td{border: 1px solid #ccc; border-collapse: collapse;}
+.tbl_member th, td{padding: 10px;}
+.tbl_member thead{background: #eee;}

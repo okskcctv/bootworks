@@ -7,10 +7,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import com.boot.domain.Board;
 
-public interface BoardRepository extends JpaRepository<Board, Long>{
+public interface BoardRepository extends JpaRepository<Board, Long>,
+QuerydslPredicateExecutor<Board>{
 	// 글 목록 검색
 	@Query("SELECT b FROM Board b")
 	Page<Board> getBoardList(Pageable pageable);

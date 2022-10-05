@@ -3,10 +3,13 @@ package com.boot.service;
 import org.springframework.data.domain.Page;
 
 import com.boot.domain.Board;
+import com.boot.domain.Search;
 
 public interface BoardService {
 	
-	Page<Board> getBoardLsit(Board board);	// 게시글 목록(페이징 처리)
+	// Page<Board> getBoardList(Board board);	// 게시글 목록(페이징 처리)
+	
+	Page<Board> getBoardList(Search search);	// 게시글 목록(검색 처리)
 	
 	void insertBoard(Board board);	// 게시글 등록
 	

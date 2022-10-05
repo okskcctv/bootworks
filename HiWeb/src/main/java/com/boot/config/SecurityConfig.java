@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/board/**").authenticated()	// 로그인한 사용자만 접근
 				.antMatchers("/admin/**").hasRole("ADMIN");	// ADMIN 권한을 가진 사용자만 접근
 		
-		security.csrf().disable();	// csrf 비활성화
+		// security.csrf().disable();	// csrf 비활성화
 		// security.formLofin();	// 스프링부트 제공 로그인 폼 실행
 		security.formLogin().loginPage("/system/login")
 				.defaultSuccessUrl("/board/getBoardList", true);

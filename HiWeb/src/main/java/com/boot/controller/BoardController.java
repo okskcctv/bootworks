@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.boot.config.SecurityUser;
 import com.boot.domain.Board;
+import com.boot.domain.Search;
 import com.boot.service.BoardService;
 
 @RequestMapping("/board/")
@@ -22,8 +23,12 @@ public class BoardController {
 	
 	// 게시글 목록
 	@GetMapping("/getBoardList")
-	public String getBoardList(Board board, Model model) {
-		Page<Board> boardList = service.getBoardLsit(board);
+	public String getBoardList(Board board, Model model, Search search) {
+		if(search.getSearchCondition() == null)	// 조건이 없으면 제목을 설정
+			search.setSearchCondition("TITLE");
+		if(search.getSearchKeyword() == null)	// 검색어가 없으면 빈 문자열 초기화
+			search.setSearchKeyword("");
+		Page<Board> boardList = service.getBoardList(search);
 		model.addAttribute("boardList", boardList);
 		return "board/getBoardList";
 	}
@@ -52,6 +57,13 @@ public class BoardController {
 		Board board = service.getBoard(seq);
 		model.addAttribute(board);
 		return "board/getBoard";
+	}
+	
+	// 게시글 수정
+	@PostMapping("/updateBoard")
+	public String updateBoard(Board board) {
+		service.updateBoard(board);
+		return "redirect:getBoardList";
 	}
 	
 	// 게시글 삭제
