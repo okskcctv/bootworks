@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout1}">
+	  
+	<meta charset="UTF-8">
+	
+	<div layout:fragment="content" class="content">
+		<h2>글 작성</h2>
+		<form th:action="@{/board/register}" th:method="post">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title"></td>
+				</tr>
+				<tr>
+					<td>작성자 이메일</td>
+					<td><input type="text" name="writerEmail"></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><textarea rows="10" cols="50" name="content"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="submit">작성</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</html>

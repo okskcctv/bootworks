@@ -13,6 +13,9 @@ public interface GuestBookService {
 	// 게시글 목록
 	PageResultDto<GuestBookDto, GuestBook> getList(PageRequestDto requestDto);
 	
+	// 게시글 상세보기
+	GuestBookDto read(Long gno);
+	
 	// 자바 8버전 부터 구체 메서드 사용 가능 (default 키워드로 가능)
 	default GuestBook dtoToEntity(GuestBookDto dto) {
 		GuestBook entity = GuestBook.builder()

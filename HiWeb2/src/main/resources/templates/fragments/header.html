@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/board/getBoardList" sec:authorize="isAuthenticated()">게시판</a>
                 </li>
+                <li class="nav-item">
+                	<a class="nav-link" href="/board/getBoardList" sec:authorize="hasRole('ROLE_ADMIN')">관리</a>
+                </li>
             </ul>
         </div>
     </nav>

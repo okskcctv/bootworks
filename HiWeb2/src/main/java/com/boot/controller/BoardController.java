@@ -20,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @RequestMapping("/board/")
 @Controller
-@Slf4j
 public class BoardController {
 	
 	@Autowired
@@ -50,6 +49,22 @@ public class BoardController {
 			@AuthenticationPrincipal SecurityUser principal) {
 		board.setMember(principal.getMember());
 		service.insertBoard(board);
+		return "redirect:/board/getBoardList";
+	}
+	
+	@GetMapping("/updateBoard")
+	public String updateBoard(Board board,
+			@AuthenticationPrincipal SecurityUser principal) {
+		board.setMember(principal.getMember());
+		service.updateBoard(board);
+		return "redirect:/board/getBoardList";
+		
+	}
+	
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(Long seq) {
+		Board board = service.getBoard(seq);
+		service.deleteBoard(board);
 		return "redirect:/board/getBoardList";
 	}
 	
