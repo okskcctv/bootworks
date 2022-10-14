@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	  layout:decorate="~{layout/layout1}">
+	  
+	<meta charset="UTF-8">
+	
+	<div layout:fragment="content" class="content">
+		<h2>글쓰기</h2>
+		<form th:action="@{insertBoard}" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<table class="tbl_reg">
+				<tr>
+					<td th:text="제목"></td>
+					<td><input type="text" name="title"></td>
+				</tr>
+				<tr>
+					<td th:text="작성자"></td>
+					<td sec:authentication="principal.member.name"></td>
+				</tr>
+				<tr>
+					<td th:text="내용"></td>
+					<td>
+						<textarea name="content" rows="10" cols="50"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit">새글 등록</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</html>
